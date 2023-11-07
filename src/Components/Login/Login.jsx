@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import auth from "./../../Firebase/firebase.config";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   // const auth = getAuth(app);
@@ -80,6 +81,9 @@ const Login = () => {
 
   return (
     <div className="hero-content flex-col lg:flex-row-reverse my-10 mx-auto">
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-200">
         <div className="card-body">
           <form onSubmit={handleSignIn}>

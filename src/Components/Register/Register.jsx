@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import auth from "../../Firebase/firebase.config";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -94,6 +95,9 @@ const Register = () => {
 
   return (
     <div className="hero-content flex-col lg:flex-row-reverse mt-10 mx-auto mb-10">
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
       <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-200">
         <div className="card-body">
           <form onSubmit={handleRegister}>
