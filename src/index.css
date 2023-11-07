@@ -5,3 +5,6 @@
   margin: 0px;
   padding: 0px;
 }
+.btn {
+  text-transform: none;
+}
