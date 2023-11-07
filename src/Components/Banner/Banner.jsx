@@ -17,11 +17,12 @@ const Banner = () => {
         data-aos-duration="2000"
       >
         <h1 className="text-2xl md:text-3xl my-5 lg:text-5xl text-center text-red-500 font-bold">
-          Elevate Your Shopping <br /> Experience
+          Manage Your Restaurant <br /> with Ease
         </h1>
         <h3 className="text-center font-medium text-base md:text-xl">
-          Discover a world of exquisite brands to make your shopping <br />
-          truly unforgettable. we bring your dreams to life.
+          Streamline your restaurant operations and delight your customers.{" "}
+          <br />
+          We provide the tools you need for success.
         </h3>
       </div>
     </div>

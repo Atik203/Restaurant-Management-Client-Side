@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const { displayName, photoURL } = user || {};
-
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
   const handleLogout = () => {
     logout()
       .then(
@@ -62,6 +62,46 @@ const Navbar = () => {
     </>
   );
 
+  const menuLinks = (
+    <>
+      <li>
+        <NavLink
+          to="/added-food-items"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-[#FF444A] underline" : ""
+          }
+        >
+          My Added Foods
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink
+          to="/add-food-items"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-[#FF444A] underline" : ""
+          }
+        >
+          Add Food Items
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/ordered-food-items"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-[#FF444A] underline" : ""
+          }
+        >
+          My Ordered Foods
+        </NavLink>
+      </li>
+    </>
+  );
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
+
   return (
     <div className="w-11/12 mx-auto rounded-xl">
       <div className="navbar p-5 bg-base-200">
@@ -107,14 +147,21 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-              <div className="mx-auto">
+              <div className="mx-auto relative">
                 <img
                   src={photoURL}
-                  className="h-12 w-12 rounded-full ml-5"
+                  className="h-12 w-12 rounded-full ml-5 cursor-pointer"
                   alt=""
+                  onClick={toggleDropdown}
                 />
                 <h1>{displayName}</h1>
+                {isDropdownOpen && (
+                  <div className="absolute top-14 right-0 mt-8 bg-white text-black shadow-md w-40 rounded-md z-[2]">
+                    <ul className="menu menu-sm p-2">{menuLinks}</ul>
+                  </div>
+                )}
               </div>
+
               <div>
                 <button>
                   <Link
