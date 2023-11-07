@@ -1,12 +1,13 @@
 import { Helmet } from "react-helmet";
+import Banner from "../../Components/Banner/Banner";
 
 const Home = () => {
   return (
-    <div>
+    <div className="w-11/12 mx-auto">
       <Helmet>
         <title>Home</title>
       </Helmet>
-      <h1>Bannner</h1>
+      <Banner></Banner>
     </div>
   );
 };
