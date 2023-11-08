@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
 
 const FoodDetails = ({ foodItem }) => {
@@ -17,6 +18,9 @@ const FoodDetails = ({ foodItem }) => {
 
   return (
     <div className="w-10/12 mx-auto mt-20 mb-20">
+      <Helmet>
+        <title>Food Details</title>
+      </Helmet>
       <img src={img} className="md:h-[400px] lg:h-[800px] w-full" alt="" />
       <div className="p-4">
         <h1 className="text-red-500 font-bold text-2xl my-3">
@@ -49,7 +53,7 @@ const FoodDetails = ({ foodItem }) => {
       <div className="ml-4">
         <Link to={`/BuyFood/${_id}`}>
           <button className="btn text-white border-none bg-red-500 hover:text-black hover:bg-gray-300">
-            Buy Now
+            Purchase Now
           </button>
         </Link>
       </div>
