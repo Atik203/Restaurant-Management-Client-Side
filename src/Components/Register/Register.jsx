@@ -3,11 +3,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import auth from "../../Firebase/firebase.config";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Helmet } from "react-helmet";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Register = () => {
+  const axiosSecure = useAxiosSecure();
+
   const { createUser } = useContext(AuthContext);
   const [RegError, setRegError] = useState("");
   const [showPass, setshowPass] = useState(false);
@@ -71,6 +73,11 @@ const Register = () => {
     createUser(email, password)
       .then((useCredential) => {
         const user = useCredential.user;
+
+        const userData = { name, email, photo, password };
+        axiosSecure.post("/users", { userData }).then((res) => {
+          console.log(res);
+        });
 
         toast.success("Registration Completed Successfully", {
           position: "top-right",
