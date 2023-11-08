@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { useLoaderData } from "react-router-dom";
+
 import SingleFoodItemCard from "../../Components/SingleFoodItemCard/SingleFoodItemCard";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -12,6 +12,9 @@ const AllFoodItems = () => {
   const [itemsPerPage, setItemsPerPage] = useState(9);
   const [currentPage, setCurrentPage] = useState(0);
   const totalPage = Math.ceil(count / itemsPerPage);
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("default");
 
   useEffect(() => {
     axiosSecure.get("/foodsCount").then((res) => {
@@ -29,6 +32,28 @@ const AllFoodItems = () => {
         console.error(error);
       });
   }, [axiosSecure, currentPage, itemsPerPage]);
+
+  const handleSearch = () => {
+    axiosSecure.get(`/searchFoods?q=${searchQuery}`).then((res) => {
+      setFoodItems(res.data);
+    });
+  };
+
+  const handleFilterChange = (e) => {
+    setSelectedFilter(e.target.value);
+    handleFilter(e.target.value);
+  };
+
+  const handleFilter = (filterType) => {
+    axiosSecure
+      .get(`/filterFoods?filterType=${filterType}`)
+      .then((res) => {
+        setFoodItems(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   const pages = [...Array(totalPage).keys()];
 
@@ -64,34 +89,56 @@ const AllFoodItems = () => {
             type="search"
             placeholder="Search Food here..."
             id="searchInput"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             name="name"
             className="bg-base-100 border-2 border-[#DEDEDE] px-4 w-48 md:w-80 h-12 md:h-14 rounded-lg"
           />
         </form>
         <button
+          onClick={handleSearch}
           type="submit"
           className="btn btn-primary bg-[#FF444A] rounded-lg h-10 md:h-14 px-6 text-white border-none hover:bg-gray-200 hover:text-black"
         >
           Search
         </button>
       </div>
-      <div className="flex justify-center items-center gap-3 text-lg">
-        <div>
-          <h1>Show: </h1>
+      <div className="flex items-center justify-center gap-8">
+        <div className="flex items-center justify-center gap-4">
+          <div className="text-lg">
+            <h1>Sort By:</h1>
+          </div>
+          <div>
+            <select
+              value={selectedFilter}
+              onChange={handleFilterChange}
+              name="filterOptions"
+              className="border-2 border-gray-400"
+            >
+              <option value="default">Default</option>
+              <option value="lowToHigh">Low to High</option>
+              <option value="highToLow">High to Low</option>
+            </select>
+          </div>
         </div>
-        <div className="font-medium">
-          <select
-            value={itemsPerPage}
-            onChange={handleItemsPerPage}
-            name=""
-            id=""
-            className="border-2 border-gray-400"
-          >
-            <option value="6">6</option>
-            <option value="9">9</option>
-            <option value="15">15</option>
-            <option value="25">25</option>
-          </select>
+        <div className="flex justify-center items-center gap-3 text-lg">
+          <div>
+            <h1>Show: </h1>
+          </div>
+          <div className="font-medium">
+            <select
+              value={itemsPerPage}
+              onChange={handleItemsPerPage}
+              name=""
+              id=""
+              className="border-2 border-gray-400"
+            >
+              <option value="6">6</option>
+              <option value="9">9</option>
+              <option value="15">15</option>
+              <option value="25">25</option>
+            </select>
+          </div>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center my-16">
