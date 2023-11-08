@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const SingleFoodItemCard = ({ foodItem }) => {
   const { _id, name, img, quantity, category, price } = foodItem;
 
@@ -15,9 +17,11 @@ const SingleFoodItemCard = ({ foodItem }) => {
           <span className="text-lg font-bold text-red-500">{price}$</span>
         </p>
         <div className="card-actions">
-          <button className="btn text-white border-none bg-red-500 hover:text-black hover:bg-gray-300">
-            Details
-          </button>
+          <Link to={`/SingleFood/${_id}`}>
+            <button className="btn text-white border-none bg-red-500 hover:text-black hover:bg-gray-300">
+              Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>

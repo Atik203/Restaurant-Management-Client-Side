@@ -1,18 +1,15 @@
 import { Helmet } from "react-helmet";
-
 import SingleFoodItemCard from "../../Components/SingleFoodItemCard/SingleFoodItemCard";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const AllFoodItems = () => {
   const [foodItems, setFoodItems] = useState([]);
-
   const axiosSecure = useAxiosSecure();
   const [count, setCount] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(9);
   const [currentPage, setCurrentPage] = useState(0);
   const totalPage = Math.ceil(count / itemsPerPage);
-
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("default");
 
