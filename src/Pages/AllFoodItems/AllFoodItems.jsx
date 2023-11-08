@@ -15,7 +15,7 @@ const AllFoodItems = () => {
 
   useEffect(() => {
     axiosSecure.get("/foodsCount").then((res) => {
-      setCount(res.data);
+      setCount(res.data.count);
     });
   }, [axiosSecure]);
 
@@ -30,8 +30,28 @@ const AllFoodItems = () => {
       });
   }, [axiosSecure, currentPage, itemsPerPage]);
 
+  const pages = [...Array(totalPage).keys()];
+
+  const handleItemsPerPage = (e) => {
+    const val = parseInt(e.target.value);
+    setItemsPerPage(val);
+    setCurrentPage(0);
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < pages.length - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="w-11/12 mx-auto mb-20">
       <Helmet>
         <title>All Food Items</title>
       </Helmet>
@@ -55,6 +75,25 @@ const AllFoodItems = () => {
           Search
         </button>
       </div>
+      <div className="flex justify-center items-center gap-3 text-lg">
+        <div>
+          <h1>Show: </h1>
+        </div>
+        <div className="font-medium">
+          <select
+            value={itemsPerPage}
+            onChange={handleItemsPerPage}
+            name=""
+            id=""
+            className="border-2 border-gray-400"
+          >
+            <option value="6">6</option>
+            <option value="9">9</option>
+            <option value="15">15</option>
+            <option value="25">25</option>
+          </select>
+        </div>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center my-16">
         {foodItems?.map((foodItem) => (
           <SingleFoodItemCard
@@ -62,6 +101,33 @@ const AllFoodItems = () => {
             key={foodItem._id}
           ></SingleFoodItemCard>
         ))}
+      </div>
+      <div className="pagination">
+        <button
+          className="bg-gray-300 text-black px-4 py-2 rounded-md"
+          onClick={handlePreviousPage}
+        >
+          Prev
+        </button>
+        {pages?.map((page) => (
+          <button
+            onClick={() => setCurrentPage(page)}
+            className={`paginationButton ${
+              currentPage === page
+                ? "bg-red-500 px-4 py-2 rounded-md text-white"
+                : "bg-gray-300 text-black px-4 py-2 rounded-md"
+            }`}
+            key={page}
+          >
+            {page + 1}
+          </button>
+        ))}
+        <button
+          className="bg-gray-300 text-black px-4 py-2 rounded-md"
+          onClick={handleNextPage}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

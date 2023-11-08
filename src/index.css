@@ -8,3 +8,22 @@
 .btn {
   text-transform: none;
 }
+.pagination {
+  text-align: center;
+}
+
+.paginationButton {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.options {
+  text-align: center;
+  margin-top: 20px;
+}
+.options select {
+  width: 50px;
+  height: 30px;
+}
+.options option {
+  font-size: 20px;
+}
