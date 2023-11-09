@@ -207,7 +207,7 @@ const NewAddFoodItem = () => {
           ></textarea>
         </div>
         <div className="form-control w-full max-w-5xl mx-auto mt-6 mb-6">
-          <button className="btn bg-green-500 text-white hover:text-black">
+          <button className="btn bg-red-500 text-white hover:text-black">
             Add New Food
           </button>
         </div>
