@@ -44,17 +44,25 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", loggedEmail, {
-            withCredentials: true,
-          })
+          .post(
+            "https://restaurant-management-server-side-nu.vercel.app/jwt",
+            loggedEmail,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             // console.log(res.data);
           });
       } else {
         axios
-          .post("http://localhost:5000/logout", loggedEmail, {
-            withCredentials: true,
-          })
+          .post(
+            "https://restaurant-management-server-side-nu.vercel.app/logout",
+            loggedEmail,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             console.log(res.data);
           });

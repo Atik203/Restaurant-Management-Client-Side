@@ -36,8 +36,6 @@ RestoControl is a sophisticated restaurant management system that seamlessly int
 
 - **Filtering**: The application provides filtering options for users to narrow down search results based on specific criteria.
 
-
-
 ## Features
 
 - **User Authentication**: Users can create accounts, sign in, and securely manage their profiles using Firebase Authentication. Personalized experiences and secured transactions are made possible through user authentication.
@@ -64,8 +62,6 @@ RestoControl is a sophisticated restaurant management system that seamlessly int
 
 - **Filtering Options**: Users can filter search results based on specific criteria, streamlining the data retrieval process.
 
-
-
 ## Getting Started
 
 1. **Clone the Repository**: Begin by cloning the project repository to your local machine.
@@ -75,10 +71,13 @@ RestoControl is a sophisticated restaurant management system that seamlessly int
 
    cd the-brand-shop
 
+   ```
+
 2. **Install Dependencies**: Install the required project dependencies to ensure all features work seamlessly.
 
    ```bash
    npm install
+   ```
 
 - Configure Firebase: Set up a Firebase project and add the Firebase configuration to the project to enable user authentication and other Firebase features.
 
@@ -88,6 +87,7 @@ RestoControl is a sophisticated restaurant management system that seamlessly int
 
   ```bash
   npm start
+  ```
 
 ## Usage
 
@@ -101,10 +101,9 @@ RestoControl is a sophisticated restaurant management system that seamlessly int
 
 - **Admin Product Management**: Admin users can log in to add new products to the catalog, providing a streamlined process for expanding the product selection.
 
-
 ## Live Demo
 
-Check out the live demo of the project at [RestoControl](). Experience the application's features and functionalities in action.
+Check out the live demo of the project at [RestoControl](https://restocontrol.surge.sh/). Experience the application's features and functionalities in action.
 
 ## License
 
