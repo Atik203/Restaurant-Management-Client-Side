@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const AboutUs = () => {
   const [sections, setSections] = useState([]);
 
+  const axiosSecure = useAxiosSecure();
+
   useEffect(() => {
-    fetch("/about.json")
-      .then((response) => response.json())
-      .then((data) => setSections(data))
-      .catch((error) => console.error(error));
-  }, []);
+    axiosSecure.get("/AboutUs").then((res) => setSections(res.data));
+  }, [axiosSecure]);
 
   return (
     <div className="py-16 w-10/12 mx-auto min-h-screen">
