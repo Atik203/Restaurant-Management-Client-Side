@@ -47,7 +47,9 @@ const MyOrderedItems = () => {
 
   return (
     <div className="w-11/12 mx-auto my-20">
-      <Helmet>My Ordered Items</Helmet>
+      <Helmet>
+        <title>My Ordered Items</title>
+      </Helmet>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -55,7 +57,7 @@ const MyOrderedItems = () => {
             <tr>
               <th>Food Name</th>
               <th>Customer Details</th>
-              <th>Pricer</th>
+              <th>Price</th>
               <th>Order Date</th>
               <th></th>
             </tr>
