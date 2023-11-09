@@ -9,7 +9,7 @@ const axiosSecure = axios.create({
 });
 
 const useAxiosSecure = () => {
-  const { logOut } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const useAxiosSecure = () => {
       },
       (error) => {
         if (error.response?.status == 401 || error.response?.status == 403) {
-          logOut()
+          logout()
             .then(() => {
               navigate("/login");
             })
@@ -27,7 +27,7 @@ const useAxiosSecure = () => {
         }
       }
     );
-  }, [logOut, navigate]);
+  }, [logout, navigate]);
 
   return axiosSecure;
 };
