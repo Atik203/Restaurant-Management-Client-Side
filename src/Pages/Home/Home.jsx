@@ -5,6 +5,8 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Review from "../../Components/Review/Review";
+import AboutUs from "../../Components/AboutUs/AboutUs";
 
 const Home = () => {
   const axiosSecure = useAxiosSecure();
@@ -41,6 +43,15 @@ const Home = () => {
             Show All Items
           </button>
         </Link>
+      </div>
+      <h1 className="text-3xl font-bold text-center mt-28 md:mt-20">
+        Reviews from Our Customer
+      </h1>
+      <div className="mb-20 mt-10">
+        <Review></Review>
+      </div>
+      <div className="mb-20">
+        <AboutUs></AboutUs>
       </div>
     </div>
   );

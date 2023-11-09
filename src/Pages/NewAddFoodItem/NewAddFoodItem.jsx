@@ -63,7 +63,7 @@ const NewAddFoodItem = () => {
       .then((response) => {
         console.log(response.data);
 
-        toast.success("Updated Successfully", {
+        toast.success("Added Successfully", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
