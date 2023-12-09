@@ -104,6 +104,7 @@ RestoControl is a sophisticated restaurant management system that seamlessly int
 ## Live Demo
 
 Check out the live demo of the project at [RestoControl](https://restocontrol.surge.sh/). Experience the application's features and functionalities in action.
+Check Out the Server Side of the project [Click Here](https://github.com/Atik203/Restaurant-Management-Server-Side)
 
 ## License
 
