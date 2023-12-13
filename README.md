@@ -61,6 +61,7 @@ RestoControl is a sophisticated restaurant management system that seamlessly int
 - **Search Functionality**: Backend-integrated search functionality allows users to quickly find relevant information.
 
 - **Filtering Options**: Users can filter search results based on specific criteria, streamlining the data retrieval process.
+- **Framer Motion**: Added Framer Motion to website to bring dynamic and engaging user interactions to a whole new level.
 
 ## Getting Started
 

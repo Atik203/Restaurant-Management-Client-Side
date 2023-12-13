@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom";
-
+import { motion } from "framer-motion";
 const BestSellingFoods = ({ foodItem }) => {
+  const projectVariants = {
+    hover: { scale: 1.1 },
+  };
   const { _id, name, img, quantity, category, price } = foodItem;
 
   return (
-    <div className="card bg-base-100 h-[500px] shadow-xl">
+    <motion.div
+      whileHover="hover"
+      whileTap="tap"
+      variants={projectVariants}
+      className="card bg-base-100 h-[500px] shadow-xl"
+    >
       <figure>
         <img src={img} alt="food" className="h-[320px] w-full" />
       </figure>
@@ -24,7 +32,7 @@ const BestSellingFoods = ({ foodItem }) => {
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
